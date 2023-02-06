@@ -1,4 +1,9 @@
 <section class="wrapper main-wrapper" style=''>
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/series-label.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+<script src="https://code.highcharts.com/modules/accessibility.js"></script>
 
 <script type="text/javascript">
 $(function () { 
@@ -77,6 +82,49 @@ $(function () {
         }]
     });
 });
+$(function () { 
+
+    var x,y;
+    500*x+ 400*y <= 10000;
+    var max = 100*x+50*y;
+    var garisX=[];
+    var garisY=[];
+    for (let i = 0; i <= 20; i++) {
+        y = (10000 - i*500)/400;
+        garisX[i] = 100*i+50*y;
+        // garisY[i] = (10000 - i*400)/500;
+    }
+
+    var chart = Highcharts.chart({
+        chart: {
+            type: 'line',
+             renderTo: 'Maksimum'
+        },
+        title: {
+            text: 'Keuntungan Maksimum'
+        },
+        // xAxis: {
+        //     categories: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
+        // },
+        yAxis: {
+            title: {
+                text: 'Keuntungan'
+            }
+        },
+        plotOptions: {
+            line: {
+                dataLabels: {
+                    enabled: true
+                },
+                enableMouseTracking: false
+            }
+        },
+        series: [{
+            name: 'Keuntungan',
+            data: garisX
+        }]
+    });
+});
   
 </script>
 
@@ -104,6 +152,18 @@ $(function () {
                 <!-- <div class="panel-heading">Bagan Laba Rugi</div> -->
                 <div class="panel-body">
                     <div id="laba"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 col-md-offset-1">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div id="Maksimum"></div>
                 </div>
             </div>
         </div>
